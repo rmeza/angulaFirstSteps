@@ -8,30 +8,43 @@
 	.row {
 		margin: 15px auto;
 	}
+    input[type='text']{
+        margin: 15px auto;
+    }
 	</style>
 </head>
 <body>
-<div class="container" ng-controller="AttendeesController">
-<div class="row">
-<div class="row">
-<div class="col-md-6">
-	<input type="text" ng-model="query" class="form-control" placeholder="Search"/>
-</div>
-</div>
-	<div class="col-md-12" >
-		<ul class="list-group">
-		<li class="list-group-item" ng-repeat="attendee in attendees| filter:query">{{attendee}}</li>
-		
-		</ul>
-
-	</div>
-	</div>
-</div>
+    
+  <div class="container" ng-controller="AttendesController">
+        <div class="row">
+          <div class="col-md-12">
+            <h1>{{attende.name}}</h1>
+            <h2>{{attende.email}}</h2>
+          </div><!-- col-md-12 -->
+        </div><!-- row -->
+        <div class="row">
+          <div class="col-md-6">
+            <input type="text" ng-model="attende.name" class="form-control">
+            <input type="text" ng-model="attende.email" class="form-control">
+            <button class="btn btn-primary" type="button" ng-click="addAttende()">Add attende</button>
+          </div><!-- col-md-12 -->
+        </div><!-- row -->
+        <div class="row">
+          <div class="col-md-6">
+            <ul class="list-group">
+              <li class="list-group-item" ng-repeat="current_attende in attendes">
+                {{current_attende.name}} <button class="btn btn-danger" ng-click="removeAttende($index)">Remove attende</button>
+              </li>
+            </ul>
+          </div><!-- col-md-6 -->
+        </div><!-- row -->
+      </div><!-- container -->
 
 <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
 <script type="text/javascript" src="bower_components/angularjs/angular.min.js"></script>
 <script type="text/javascript" src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="js/app.js"></script>
 <script type="text/javascript" src="js/controllers.js"></script>
+<script src="js/services.js"></script>
 </body>
 </html>

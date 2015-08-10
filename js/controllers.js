@@ -1,11 +1,23 @@
 (function () {
+  angular.module('controllers', [])
+    .controller('AttendesController', function ($scope, AttendesService) { // $injector
 
-	'use strict';
-	angular.module('controllers',[])   //creaet a controller
-	.controller('AttendeesController',function ($scope) {
-		$scope.attendees =['Ricardo','Deana','richiDan','Perla','Don PEPe'];
+      $scope.attende = {
+        name: '',
+        email: ''
+      };
 
-		});
+      $scope.attendes = AttendesService.attendes;
 
+      $scope.addAttende = function () {
+        var attende = angular.copy($scope.attende);
+        AttendesService.addAttende(attende);
+      };
+
+      $scope.removeAttende = function (attendeIndex) {
+        AttendesService.removeAttende(attendeIndex);
+      };
+
+    });
 
 })();
